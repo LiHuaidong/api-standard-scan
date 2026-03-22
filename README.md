@@ -8,6 +8,7 @@
 | 接口参数注解规范         | 1. `@PathVariable`参数：<br>   - 必须添加`@Parameter`注解（可直接标注在参数上，或在`@Operation`的`parameters`中统一声明）；<br>   - `@Parameter`的`name`需与`@PathVariable`的参数名完全一致；<br>   - `@Parameter`的`description`为必填字段，`example`/`defaultValue`建议填写；<br>   - 包装类型参数需添加`@NotNull/@NotBlank`校验注解，基本类型参数禁用`@NotNull`；<br>2. `@RequestParam`参数：<br>   - 必须添加`@Parameter`注解；<br>   - `@Parameter`的`required`属性需与`@RequestParam`的`required`属性保持一致；<br>   - 数值类型参数建议添加`@Min/@Max/@Digits`等范围校验注解；<br>   - 包装类型必填参数强制添加`@NotNull`注解，基本类型参数禁用`@NotNull`注解。 |
 | 请求/返回体DTO/VO注解规范 | 1. 类级别必须添加`@Schema`注解，且注解中的`description`字段不能为空；<br>2. 字段级别必须添加`@Schema`注解，其中`description`为必填字段，`example`/`defaultValue`建议填写；<br>3. 请求体DTO的字段需添加`jakarta.validation.constraints`系列校验注解（如`@NotBlank`、`@Min`、`@Email`等）；<br>4. 嵌套类（包括静态内部类、多层嵌套类、集合/数组嵌套类）需遵循与顶级类一致的`@Schema`注解和校验注解规范。 |
 # 扫描结果示例
+```
 ========== 开始校验Swagger3规范 ==========
 
 --- 校验Controller@Tag注解 ---
@@ -45,3 +46,5 @@
 ⚠️ com.example.apistandardscan.module.business.dto.UserCreateRequestDTO.testModel @Schema缺少example（建议添加）
 ❌ com.example.apistandardscan.module.business.controller.UserController 未添加@Schema注解
 ========== 校验结束 ==========
+
+```
